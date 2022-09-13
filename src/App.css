@@ -1,38 +1,89 @@
-.App {
+body{
+  background: #eee !important;
+}
+.app {
+  background: #fff;
+  padding: 30px;
+  margin-top: 10%;
+}
+.header {
+  margin: 0.5em;
+  font-size: 2em;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.tasks-list {
+  background: #e8e8e8;
+  border-radius: 4px;
+  padding: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.task-list {
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background: #f7f4f4;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  padding: 3px 10px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+.tasks-container {
+  width: 100%;
+  border-radius: 8px;
+  padding: 20px 10px;
+  color: #000;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 10px
+}
+
+.task {
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 0.5em;
+  margin: 0.5em;
+  color: #000;
+}
+.btn-div{
+  width: 30%;
+  text-align: end;
+}
+.task-p{
+  width: 70%;
+  padding-top: 13px;
+}
+textarea{
+  width: 100%;
+}
+.s-btn{
+  background: rgb(12, 124, 251);
+  border-radius: 5px;
+  margin: 0px 5px;
+  padding: 5px 8px;
+  border: none;
+  cursor: pointer;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.del-btn{
+  background: red;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.submit-btn{
+  float: right;
+  background: rgb(12, 124, 251);
+  border-radius: 5px;
+  margin: 0px 5px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+.task-form{
+  margin-bottom: 10px;
 }
