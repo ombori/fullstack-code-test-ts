@@ -25,8 +25,7 @@ export function Home() {
       setLoading(false);
     }, 3000);
     fetchData();
-    return () => clearTimeout(delayTimeout);
-  }, [page]);
+  }, []);
 
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
