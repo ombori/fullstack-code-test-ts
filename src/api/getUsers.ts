@@ -7,7 +7,7 @@ import axios from "axios";
     total: number
     total_pages: number
     data: User[]
-    support: Support
+    support: any
   }
   
  export interface User {
@@ -18,10 +18,6 @@ import axios from "axios";
     avatar: string
   }
   
-  export interface Support {
-    url: string
-    text: string
-  }
   
 export async function getUsers(page:number):Promise<ResponseData> {
   const res =  await axios.get("https://reqres.in/api/users?page=" + page);

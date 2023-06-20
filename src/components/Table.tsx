@@ -5,9 +5,9 @@ interface Props {
   users: User[];
 }
 
-const renderRows = (user: User) => {
+const renderRows = (user: User, i:any) => {
   return (
-    <li className="py-3 sm:py-4" key={user.id.toString()}>
+    <li className="py-3 sm:py-4" key={i.toString()}>
       <div className="flex items-center space-x-4">
         <div className="flex-shrink-0">
           <img
@@ -32,8 +32,6 @@ const renderRows = (user: User) => {
 
 
 const Table = ({ ...props }: Props) => {
-  console.log(props.users);
-
   return (
     <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
       <div className="flex items-center justify-between mb-4">
@@ -43,7 +41,7 @@ const Table = ({ ...props }: Props) => {
       </div>
       <div className="flow-root">
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-          {props.users.map((user) => renderRows(user))}
+          {props.users.map((user, i) => renderRows(user, i))}
         </ul>
       </div>
     </div>
