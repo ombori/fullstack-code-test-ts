@@ -1,17 +1,16 @@
-import { render } from "@testing-library/react";
 import { User } from "../api/getUsers";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 interface Props {
   users: User[];
 }
 
-const renderRows = (user:User) => {
+const renderRows = (user: User) => {
   return (
-    <li className="py-3 sm:py-4"  key={user.id.toString()}>
+    <li className="py-3 sm:py-4" key={user.id.toString()}>
       <div className="flex items-center space-x-4">
         <div className="flex-shrink-0">
           <img
-          
             className="w-8 h-8 rounded-full"
             src={user.avatar}
             alt={user.last_name.toString()}
@@ -19,16 +18,17 @@ const renderRows = (user:User) => {
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-          {user.first_name + " " + user.last_name}
+            {user.first_name + " " + user.last_name}
           </p>
           <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-          {user.email}
+            {user.email}
           </p>
         </div>
       </div>
     </li>
   );
 };
+
 
 
 const Table = ({ ...props }: Props) => {
