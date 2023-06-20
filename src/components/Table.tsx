@@ -1,5 +1,4 @@
 import { User } from "../api/getUsers";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 interface Props {
   users: User[];
@@ -19,9 +18,6 @@ const renderRows = (user: User, i:any) => {
         <div className="flex-1 min-w-0">
           <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
             {user.first_name + " " + user.last_name}
-          </p>
-          <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-            {user.email}
           </p>
         </div>
       </div>
