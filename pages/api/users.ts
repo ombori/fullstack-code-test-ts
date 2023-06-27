@@ -41,6 +41,8 @@ async function handler(req: RequestWithData, res: NextApiResponse) {
     throw new ApiError(HttpStatusCode.BadRequest, 'Failed to load data, try again later');
   }
 
+  await new Promise((resolve) => setTimeout(resolve, query.page === '1' ? 3000 : 1000));
+
   return res.status(200).json(outerResInstance);
 }
 

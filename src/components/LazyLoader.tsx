@@ -1,5 +1,7 @@
 import { useOnScreen } from '@src/hooks/useOnScreen';
 import { useEffect, useRef, useState } from 'react';
+import { Loading } from './Loading';
+import * as Styled from './Loading.styled';
 
 type props = {
   loadMore: Function;
@@ -25,17 +27,12 @@ export const LazyLoader = ({ loadMore, isLastPage }: props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toLoad, isLastPage]);
 
-  if (isLastPage) return <div>{'Nothing to load more'}</div>;
+  if (isLastPage)
+    return <Styled.Caption variant="body1">{'There is no more users to be loaded'}</Styled.Caption>;
 
   return (
-    <div ref={ref}>
-      {onScreen ? (
-        <div style={{ width: '100%', height: '200px', border: '3px solid white' }}>
-          {'I AM LOADING'}
-        </div>
-      ) : (
-        <div>{'Not Loaded'}</div>
-      )}
-    </div>
+    <Styled.OuterWrapper ref={ref}>
+      {onScreen ? <Loading /> : <Styled.Empty></Styled.Empty>}
+    </Styled.OuterWrapper>
   );
 };

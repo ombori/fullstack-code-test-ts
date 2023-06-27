@@ -1,24 +1,24 @@
-import styled from '@emotion/styled';
 import { Typography } from '@mui/material';
+import styled from '@emotion/styled';
+import { COLORS } from '@src/constants/visuals';
 
-const Wrapper = styled.div`
+const HeaderWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 30px;
-  padding-bottom: 30px;
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #fce4ec;
+  background-color: ${COLORS.PINK};
   letter-spacing: 3px;
+  padding: 30px 0;
 `;
 
-export function Header({ title = 'Welcome' }) {
+export const Header = ({ title = 'Welcome' }) => {
   return (
-    <Wrapper>
+    <HeaderWrapper>
       <Typography variant="h5" fontWeight={500}>
         {title}
       </Typography>
-    </Wrapper>
+    </HeaderWrapper>
   );
-}
+};

@@ -2,9 +2,11 @@ import { Card } from '@src/components/Card';
 import { LazyLoader } from '@src/components/LazyLoader';
 import { Grid } from '@mui/material';
 import { ApiUsers } from '@src/types&dtos/users.client.type';
-import { useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
+import { LayoutContext } from '@src/components/Layout';
 
 export default function Home() {
+  const layout = useContext(LayoutContext);
   const [pagination, setPagination] = useState<Partial<Omit<ApiUsers, 'data'>>>({
     page: 1,
     total_pages: null,
@@ -12,7 +14,7 @@ export default function Home() {
   const [users, setUsers] = useState<ApiUsers['data']>([]);
   const { page, total_pages } = pagination;
 
-  const loadMore = (pageNum: number) => {
+  const loadMore = (pageNum: number) =>
     fetch(`/api/users?page=${pageNum}`)
       .then((res) => res.json())
       .then((res) => {
@@ -24,21 +26,23 @@ export default function Home() {
       .catch((error) => {
         console.error(error);
       });
-  };
 
   useEffect(() => {
-    loadMore(page);
+    loadMore(page).finally(() => layout.setLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const elemsToRender = useMemo(() => [...users, null], [users]);
+  const elemsToRender = useMemo(
+    () => (users.length && !layout.isLoading ? [...users, null] : null),
+    [users, layout.isLoading],
+  );
 
   const isLastPage = useMemo(() => page === total_pages, [page, total_pages]);
 
   return (
     <section>
-      <Grid container spacing={2}>
-        {users.length &&
+      <Grid container spacing={3}>
+        {elemsToRender &&
           elemsToRender.map((data, index) => {
             if (!data)
               return (
@@ -60,10 +64,10 @@ export default function Home() {
   );
 }
 
-export function getServerSideProps() {
+export const getServerSideProps = () => {
   return {
     props: {
-      layout: { title: 'Users' },
+      layout: { title: 'Users', loading: true },
     },
   };
-}
+};

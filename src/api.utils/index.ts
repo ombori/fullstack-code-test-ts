@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 type Middleware = (req: NextApiRequest | any, res: NextApiResponse) => unknown;
 type Maybe<T> = NonNullable<T> | undefined;
 
-export function withMiddleware(...middlewares: Middleware[]) {
+export const withMiddleware = (...middlewares: Middleware[]) => {
   return async function withMiddlewareHandler(req: NextApiRequest, res: NextApiResponse) {
     async function evaluateHandler(middleware: Middleware, innerMiddleware?: Maybe<Middleware>) {
       if (res.headersSent) {
@@ -29,4 +29,4 @@ export function withMiddleware(...middlewares: Middleware[]) {
       await evaluateHandler(middleware, nextMiddleware);
     }
   };
-}
+};
