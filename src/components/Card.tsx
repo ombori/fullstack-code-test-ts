@@ -1,8 +1,7 @@
 import { ApiUserData } from '@src/types&dtos/users.client.type';
 import Image from 'next/image';
-import { Paper, Grid, ButtonBase, Typography } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 import styled from '@emotion/styled';
-// import * as Styled from './Card.styled';
 
 const ImageWrapper = styled.div`
   width: 100px;
@@ -30,7 +29,6 @@ const StyledPaper = styled(Paper)`
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* border: 1px solid black; */
   margin-bottom: 60px;
   padding-left: 30px;
   padding-top: 15px;

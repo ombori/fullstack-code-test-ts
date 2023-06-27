@@ -1,6 +1,6 @@
 import { Card } from '@src/components/Card';
 import { LazyLoader } from '@src/components/LazyLoader';
-import { Grid, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
 import { ApiUsers } from '@src/types&dtos/users.client.type';
 import { useEffect, useMemo, useState } from 'react';
 
